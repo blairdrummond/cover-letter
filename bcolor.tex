@@ -1,0 +1,59 @@
+\newif\ifpdfmode
+
+\ifx\pdfoutput\undefined
+\else
+  \ifnum\pdfoutput>0 \pdfmodetrue
+    \fi
+    \fi
+
+\ifpdfmode
+
+\def\colorblack   {0 g 0 G}
+\def\colorred     {1 0 0 rg 1 0 0 RG}
+\def\colororange  {0.8 0.4 0 rg 0.8 0.4 0 RG}
+\def\colorpink    {0.9 0.3 0.4 rg 0.9 0.3 0.4 RG}
+\def\colorgreen   {0.1 0.6 0.5 rg 0.1 0.6 0.5 RG}
+\def\colorblue    {0 0.5 0.8 rg 0 0.5 0.8 RG}
+
+\ifx\pdfcolorstack\undefined
+  \def\pdfcolorstackpush{\pdfliteral{\currentcolor}}
+    \let\pdfcolorstackpop\pdfcolorstackpush
+    \else
+      \mathchardef\colorstackcnt=\pdfcolorstackinit page {\colorblack}
+        \def\pdfcolorstackpush{\pdfcolorstack\colorstackcnt push{\currentcolor}}
+          \def\pdfcolorstackpop{\pdfcolorstack\colorstackcnt pop}
+          \fi
+
+\else % of \ifpdfmode
+
+\def\colorblack   {gray 0}
+\def\colorred     {rgb 1 0 0}
+\def\colorgreen   {rgb 0 1 0}
+\def\colorblue    {rgb 0 0 1}
+
+\def\pdfcolorstackpush{\special{color push \currentcolor}}
+\def\pdfcolorstackpop{\special{color pop}}
+
+\fi  % of \ifpdfmode
+
+\def\bcolor#1{\expandafter
+  \ifx\csname color#1\endcsname \relax \def\currentcolor{#1}%
+    \else \edef\currentcolor{\csname color#1\endcsname}%
+      \fi
+        \pdfcolorstackpush
+          \aftergroup\pdfcolorstackpop
+          }
+          \let\currentcolor=\colorblack
+
+% \footline={\color{black}\hss\tenrm\folio\hss}
+
+% Examples
+% ========
+%
+% Surrounding text {\color{red}Red text} and more of it.
+% 
+% Text {\bcolor{blue}text
+%      {\bcolor{green}gree gr ee g re eg re
+%           \vfil\break
+%                egrg ree g reeg ree greeg grr reeg ree gre eee
+%                     green text} textik} end.

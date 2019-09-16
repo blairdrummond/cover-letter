@@ -1,0 +1,64 @@
+\input header
+\input bcolor
+% \input tikz
+% \input pgfmath
+% \usetikzlibrary{snakes}
+% \usetikzlibrary{calc}
+
+\enablehyperlinks
+% \definecolor{links}{rgb}{.1,.5,.4}
+\hlopts{colormodel=,color=blue}
+
+% DON'T INDENT THE COVER LETTER
+% \parindent=0 pt
+
+\newif\ifcanada
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%            My Contact Info               %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\tt
+\startright
+Blair Drummond \par
+321 Waverley St., Apt 909 \par
+K2P-0W2, Ottawa, Ontario \par
+Canada \par
+226-750-5508 \par
+blairdrummond\@protonmail.com \par
+\bigskip
+\today
+\endright
+}
+
+% True by default
+\canadatrue
+% \canadafalse
+
+\input cover-letter-contents
+
+\bigskip
+\bigskip
+
+Thank you for your time and consideration; if you have any questions or any wish to contact me, feel free to reach me either by phone or email.
+
+\ifcanada\else
+\bigskip
+{\it I am a Canadian citizen, but I am happy to relocate outside of Canada if sponsorship for a work visa is available.}
+\fi
+
+\bigskip
+
+\noindent
+Sincerely, \vskip 0.5cm
+
+\noindent
+{Blair Drummond}
+
+\footline{\hfil \it Curriculum vitae\ attached. \hfil}
+\bye
+
+%%% Local Variables:
+%%% mode: plain-tex
+%%% TeX-master: t
+%%% End:

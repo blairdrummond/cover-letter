@@ -1,0 +1,436 @@
+%%%      ___            ___           ___         ___                 
+%%%     /  /\          /__/\         /  /\       /__/\          ___   
+%%%    /  /:/          \  \:\       /  /::\      \  \:\        /  /\  
+%%%   /__/::\           \  \:\     /  /:/\:\      \  \:\      /  /:/  
+%%%   \__\/\:\      _____\__\:\   /  /:/~/:/  ___  \  \:\    /  /:/   
+%%%      \  \:\    /__/::::::::\ /__/:/ /:/  /__/\  \__\:\  /  /::\   
+%%%       \  \:\_  \  \:\~~\~~\/ \  \:\/:/   \  \:\ /  /:/ /__/:/\:\  
+%%%        \  \:\/\ \  \:\  ~~~   \  \::/     \  \:\  /:/  \__\/  \:\ 
+%%%         \__\::/  \  \:\        \  \:\      \  \:\/:/        \  \:\
+%%%         /__/:/    \  \:\        \  \:\      \  \::/          \  \:\
+%%%         \__\/      \__\/         \__\/       \__\/            \__\/
+
+\input eplain
+\input amstex
+\input amssym
+\let\footnote\plainfootnote
+
+\input plipsum
+
+% \documentstyle{amsppt}
+
+
+
+
+%%%  
+%%%        ___         ___           ___           ___         ___     
+%%%       /  /\       /  /\         /__/\         /  /\       /  /\    
+%%%      /  /:/_     /  /::\        \  \:\       /  /:/      /  /:/_   
+%%%     /  /:/ /\   /  /:/\:\        \  \:\     /  /:/      /  /:/ /\  
+%%%    /  /:/ /:/  /  /:/  \:\   _____\__\:\   /  /::\     /  /:/ /::\ 
+%%%   /__/:/ /:/  /__/:/ \__\:\ /__/::::::::\ /__/:/\:\   /__/:/ /:/\:\
+%%%   \  \:\/:/   \  \:\ /  /:/ \  \:\~~\~~\/ \__\/  \:\  \  \:\/:/~/:/
+%%%    \  \::/     \  \:\  /:/   \  \:\  ~~~       \  \:\  \  \::/ /:/ 
+%%%     \  \:\      \  \:\/:/     \  \:\            \  \:\  \__\/ /:/  
+%%%      \  \:\      \  \::/       \  \:\            \__\/    /__/:/   
+%%%       \__\/       \__\/         \__\/                     \__\/    
+%%%    
+%%%  
+  
+% 
+% ==========================================================================
+% Roman                  cmr5*  cmr6   cmr7*  cmr8   cmr9   cmr10*   cmr12
+% Math Italic            cmi5*  cmi6   cmi7*  cmi8   cmi9   cmi10*   cmi12
+% Symbol                 cmsy5* cmsy6  cmsy7* cmsy8  cmsy9  cmsy10*
+% Math Extension                       cmex7  cmex8  cmex9  cmex10*
+% Text Italic                          cmti7  cmti8  cmti9  cmti10*  cmti12
+% Slanted                                     cmsl8  cmsl9  cmsl10*  cmsl12
+% Bold Extended          cmbx5* cmbx6  cmbx7* cmbx8  cmbx9  cmbx10*  cmbx12
+% Typewriter                                  cmtt8  cmtt9  cmtt10*  cmtt12
+% Math Italic Bold       cmmib5 cmmib6 cmmib7 cmmib8 cmmib9 cmmib10
+% Symbol Bold            cmbsy5 cmbsy6 cmbsy7 cmbsy8 cmbsy9 cmbsy10
+% Text Italic Bold                                          cmbxti10
+% Sans Serif                                  cmss8  cmss9  cmss10   cmss12
+% Sans Serif Italic                           cmssi8 cmssi9 cmssi10  cmssi12
+% Sans Serif Demi Bold                                      cmssdc10
+% Small caps                                  cmcsc8 cmcsc9 cmcsc10
+% ==========================================================================
+% 
+% The font-selecting macros load the typefaces belonging to a particular
+% size.  This includes, to the extent requested, the text-mode font, the
+% math-mode text font, the math-mode script font, and the math-mode
+% scriptscript font (cf. the table of typefaces above).  Fonts are called
+% only once throughout the document.  Their font identifiers are stored for
+% later use by global definitions such as \global\font\twelverm=cmr12.  The
+% fonts marked with an * are preloaded by plain TeX.  
+
+% \loadeufb     % ?
+\loadeufm     % Fraktur
+% \loadeusm     % Symbols (?)
+% \loadeusb     % ?
+% \loadeurm     % Roman
+% \loadeurb     % ?
+
+\loadmsam
+\loadmsbm
+% \loadcmmib
+% \loadcmbsy
+
+
+\font\footmi=eufm10 at 8truept
+\font\footsu=eusm10 at 8truept
+\font\footex=euex10 at 10truept
+\font\footsc=cmcsc10 at 8truept
+\font\footbf=cmbx10 at 8truept
+\font\footrm=cmr10 at 10truept
+
+\font\hugebf=cmbx12 at 26pt
+\font\Bigbf=cmbx12  at 18pt
+\font\bigbf=cmbx12  at 16pt
+\font\Medbf=cmbx12  at 14pt
+\font\medbf=cmbx12  at 12pt
+
+\font\hugerm=cmr12 at 26pt
+\font\Bigrm=cmr12  at 18pt
+\font\bigrm=cmr12  at 16pt
+\font\Medrm=cmr12  at 14pt
+\font\medrm=cmr12  at 12pt
+
+\font\hugeit=cmti12 at 18pt
+\font\Bigit=cmti12 at 18pt
+\font\bigit=cmti12 at 16pt
+\font\Medit=cmti12 at 14pt
+\font\medit=cmti12 at 12pt
+\font\tinyit=cmti12 at 8pt
+
+
+
+
+\font\emph=cmti10 at 10pt
+
+
+
+\font\tenscr=rsfs10
+\font\sevenscr=rsfs7
+    \font\fivescr=rsfs5
+    \skewchar\tenscr='177 \skewchar\sevenscr='177 \skewchar\fivescr='177
+    \newfam\scrfam \textfont\scrfam=\tenscr \scriptfont\scrfam=\sevenscr
+    \scriptscriptfont\scrfam=\fivescr
+    \def\scr#1{{\fam\scrfam#1}}
+
+
+
+
+
+%%% 
+%%%       ___        ___          ___          ___          ___          ___    
+%%%      /  /\      /  /\        /  /\        /__/\        /  /\        /  /\   
+%%%     /  /:/_    /  /::\      /  /::\      |  |::\      /  /::\      /  /:/   
+%%%    /  /:/ /\  /  /:/\:\    /  /:/\:\     |  |:|:\    /  /:/\:\    /  /:/    
+%%%   /  /:/ /:/ /  /:/  \:\  /  /:/~/:/   __|__|:|\:\  /  /:/~/::\  /  /::\    
+%%%  /__/:/ /:/ /__/:/ \__\:\/__/:/ /:/___/__/::::| \:\/__/:/ /:/\:\/__/:/\:\   
+%%%  \  \:\/:/  \  \:\ /  /:/\  \:\/:::::/\  \:\~~\__\/\  \:\/:/__\/\__\/  \:\  
+%%%   \  \::/    \  \:\  /:/  \  \::/~~~~  \  \:\       \  \::/          \  \:\
+%%%    \  \:\     \  \:\/:/    \  \:\       \  \:\       \  \:\           \  \:\
+%%%     \  \:\     \  \::/      \  \:\       \  \:\       \  \:\           \__\/
+%%%      \__\/      \__\/        \__\/        \__\/        \__\/                
+%%% 
+%%% 
+
+
+%%%%%% US Letter Size : Comment out to go to A4 page size %%%%%%
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\hsize = 6 true in
+\hoffset = 0.2 in
+\vsize = 8.5 true in
+\voffset = 0.5in
+
+\openup 2pt
+
+% \magnification=\magstep1
+
+\global\hyphenpenalty=100
+\overfullrule=0pt
+
+\def\nl{\hfil\break}
+
+
+
+
+
+% From the TeX-Book
+\def\signed #1 (#2){{\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil\sl#1\/ \rm(#2)
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\def\proof#1{{\emph Proof:} #1 {\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil\sl $\blacksquare$
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\def\qroof#1{#1 {\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil\sl $\square$
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+
+
+
+
+%%% Headers and Footers
+\footline={
+        \hfil \footrm \today \hfil
+}
+
+
+
+\headline={}
+
+\def\rightheadline{}
+\def\leftheadline{}
+
+ 
+\def\boxit#1{\vbox{\medskip\hrule height 1pt\vskip 2pt\hrule\bigskip\hbox{
+      \vbox{\kern3pt#1\kern3pt}}\bigskip\hrule\vskip 2pt\hrule height 1pt\medskip}}
+
+
+\def\fancytitle#1{\vbox{\medskip\hrule height 1pt\hbox{
+      \vbox{\kern3pt
+      \bigskip
+      \noindent \hfil \Medbf #1 \hfil
+      \bigskip
+\kern3pt}}\hrule height 1pt\medskip}\vskip0.3in}
+
+
+ 
+
+
+%%%         ___           ___          _____          ___     
+%%%        /  /\         /__/\        /  /::\        /  /\    
+%%%       /  /:/        |  |::\      /  /:/\:\      /  /:/_   
+%%%      /  /:/         |  |:|:\    /  /:/  \:\    /  /:/ /\  
+%%%     /  /:/  ___   __|__|:|\:\  /__/:/ \__\:|  /  /:/ /::\ 
+%%%    /__/:/  /  /\ /__/::::| \:\ \  \:\ /  /:/ /__/:/ /:/\:\
+%%%    \  \:\ /  /:/ \  \:\~~\__\/  \  \:\  /:/  \  \:\/:/~/:/
+%%%     \  \:\  /:/   \  \:\         \  \:\/:/    \  \::/ /:/ 
+%%%      \  \:\/:/     \  \:\         \  \::/      \__\/ /:/  
+%%%       \  \::/       \  \:\         \__\/         /__/:/   
+%%%        \__\/         \__\/                       \__\/    
+%%%   
+
+
+
+
+\def\today{\ifcase\month\or
+January\or February\or March\or April\or May\or June\or
+July\or August\or September\or October\or November\or December\fi
+\space\number\day, \number\year}
+
+
+\def\block#1{\centerline{\vbox{\medskip\hbox{\kern4pt \vbox{\kern4pt\vbox{\hsize 23pc \noindent \strut { \it #1 } \strut} \kern4pt}\kern4pt}\smallskip}}}
+
+\def\quote#1#2{\centerline{\vbox{\medskip\hbox{\kern4pt \vbox{\kern4pt\vbox{\hsize 23pc \noindent \strut { \it #1 \if^#2^\else \nl {\line{\hfil --- #2}}\fi} \strut} \kern4pt}\kern4pt}\smallskip}}}
+
+
+
+\def\startcenter{%
+  \par
+  \begingroup
+  \leftskip=0pt plus 1fil
+  \rightskip=\leftskip
+  \parindent=0pt
+  \parfillskip=0pt
+}
+\def\endcenter{%
+  \par
+  \endgroup
+}
+\long\def\centerpars#1{\startcenter#1\stopcenter}
+
+
+% Right flush
+\def\startright{%
+  \par
+  \begingroup
+  \leftskip=0pt plus 1fil
+  \rightskip=0pt
+  \parindent=0pt
+  \parfillskip=0pt
+}
+\def\endright{%
+  \par
+  \endgroup
+}
+\long\def\rightpars#1{\startright#1\stopright}
+
+
+
+
+
+
+
+
+
+
+% \def\signed #1 {{\unskip\nobreak\hfil\penalty50
+%   \hskip2em\hbox{}\nobreak\hfil\sl#1\/ 
+%   \parfillskip=0pt \finalhyphendemerits=0 \par}}
+
+
+% From the texbook
+% 
+% \def\signed #1 {{\unskip\nobreak\hfil\penalty50
+%   \hskip2em\hbox{}\nobreak\hfil\sl#1\/ 
+%   \parfillskip=0pt \finalhyphendemerits=0 \par}}
+
+
+% \def\divsec{$$\vbox{\hrule height1pt width160pt depth0.1pt}$$}
+\def\divstar{$$*\ \ \ \ \ *\ \ \ \ \ *$$}
+\def\bull{$\bullet$}
+
+
+\def\Aut#1{Aut\left( #1 \right)}
+\def\Cay#1{\fC ay\left( #1 \right)}
+\def\im{\text{Im}}
+\def\re{\text{Re}}
+\def\Iso{\cong}
+
+% \def\inftyint{\int_{-\infty}^{+\infty}}
+
+\def\FF{\Bbb F}
+\def\KK{\Bbb K}
+\def\NN{\Bbb N}
+\def\QQ{\Bbb Q}
+\def\RR{\Bbb R}
+\def\CC{\Bbb C}
+\def\ZZ{\Bbb Z}
+
+\def\fA{\frak A} \def\fB{\frak B} \def\fC{\frak C} \def\fD{\frak D} \def\fE{\frak E} \def\fF{\frak F} \def\fG{\frak G} \def\fH{\frak H} \def\fI{\frak I} \def\fJ{\frak J} \def\fK{\frak K} \def\fL{\frak L} \def\fM{\frak M} \def\fN{\frak N} \def\fO{\frak O} \def\fP{\frak P} \def\fQ{\frak Q} \def\fR{\frak R} \def\fS{\frak S} \def\fT{\frak T} \def\fU{\frak U} \def\fV{\frak V} \def\fW{\frak W} \def\fX{\frak X} \def\fY{\frak Y} \def\fZ{\frak Z} 
+
+\def\va{\vec a} \def\vb{\vec b} \def\vc{\vec c} \def\vd{\vec d} \def\ve{\vec e} \def\vf{\vec f} \def\vg{\vec g} \def\vh{\vec h} \def\vi{\vec i} \def\vj{\vec j} \def\vk{\vec k} \def\vl{\vec l} \def\vm{\vec m} \def\vn{\vec n} \def\vo{\vec o} \def\vp{\vec p} \def\vq{\vec q} \def\vr{\vec r} \def\vs{\vec s} \def\vt{\vec t} \def\vu{\vec u} \def\vv{\vec v} \def\vw{\vec w} \def\vx{\vec x} \def\vy{\vec y} \def\vz{\vec z} 
+
+
+\def\cA{\Cal A} \def\cB{\Cal B} \def\cC{\Cal C} \def\cD{\Cal D} \def\cE{\Cal E} \def\cF{\Cal F} \def\cG{\Cal G} \def\cH{\Cal H} \def\cI{\Cal I} \def\cJ{\Cal J} \def\cK{\Cal K} \def\cL{\Cal L} \def\cM{\Cal M} \def\cN{\Cal N} \def\cO{\Cal O} \def\cP{\Cal P} \def\cQ{\Cal Q} \def\cR{\Cal R} \def\cS{\Cal S} \def\cT{\Cal T} \def\cU{\Cal U} \def\cV{\Cal V} \def\cW{\Cal W} \def\cX{\Cal X} \def\cY{\Cal Y} \def\cZ{\Cal Z} 
+
+
+\def\sA{\scr A} \def\sB{\scr B} \def\sC{\scr C} \def\sD{\scr D} \def\sE{\scr E} \def\sF{\scr F} \def\sG{\scr G} \def\sH{\scr H} \def\sI{\scr I} \def\sJ{\scr J} \def\sK{\scr K} \def\sL{\scr L} \def\sM{\scr M} \def\sN{\scr N} \def\sO{\scr O} \def\sP{\scr P} \def\sQ{\scr Q} \def\sR{\scr R} \def\sS{\scr S} \def\sT{\scr T} \def\sU{\scr U} \def\sV{\scr V} \def\sW{\scr W} \def\sX{\scr X} \def\sY{\scr Y} \def\sZ{\scr Z} 
+
+\def\To{\Rightarrow}
+\def\Iff{\Leftrightarrow}
+\def\span{\text{span}}
+\def\TODO{\vbox{\bcolor{red} \Medbf TODO}}
+\def\highlight#1{\vbox{\bcolor{green} #1}}
+\def\seteq{\, \colon\!=}
+\def\st{\ :\ }
+
+\def\qed{$\square$}
+\def\QED{$\blacksquare$}
+
+
+
+%%% 
+%%%       ___           ___         ___           ___     
+%%%      /__/\         /  /\       /  /\         /  /\    
+%%%     |  |::\       /  /:/_     /  /:/        /  /::\   
+%%%     |  |:|:\     /  /:/ /\   /  /:/        /  /:/\:\  
+%%%   __|__|:|\:\   /  /:/ /:/_ /  /::\       /  /:/~/::\ 
+%%%  /__/::::| \:\ /__/:/ /:/ //__/:/\:\     /__/:/ /:/\:\
+%%%  \  \:\~~\__\/ \  \:\/:/ /:\__\/  \:\    \  \:\/:/__\/
+%%%   \  \:\        \  \::/ /:/     \  \:\    \  \::/     
+%%%    \  \:\        \  \:\/:/       \  \:\    \  \:\     
+%%%     \  \:\        \  \::/         \  \:\    \  \:\    
+%%%      \__\/         \__\/           \__\/     \__\/    
+%%% 
+
+
+
+
+\newcount\footnotenumber \newtoks\everyfootnote
+\def\numberedfootnote{\global\advance\footnotenumber by 1
+\plainfootnote{$^{\number\footnotenumber}$}}
+
+\def\fn{\numberedfootnote}
+
+
+
+
+
+
+%% By some wizardry, pdfbookmarks
+
+\newcount\marknumber	\marknumber=1
+\newcount\countdp \newcount\countwd \newcount\countht 
+
+%
+% for ordinary tex
+%
+\def\rgboo#1{\special{color rgb #1}}
+\def\fig#1{\epsfbox{#1.eps}}
+\def\figscale#1#2{\epsfxsize=#2\epsfbox{#1.eps}}
+\def\rgboo#1{\pdfliteral{#1 rg #1 RG}}
+\def\fig#1{\pdfximage {#1.pdf}\pdfrefximage\pdflastximage}
+\def\figscale#1#2{\pdfximage width#2 {#1.pdf}\pdfrefximage\pdflastximage}
+\pdfcatalog{/PageMode /UseOutlines}		% bookmark window open
+\def\bookmark#1#2{ % #1 is the number of subheadings.
+	\pdfdest num \marknumber xyz
+	\pdfoutline goto num \marknumber count #1 {#2}
+	}
+\def\pdfklink#1#2{%
+	\noindent\pdfstartlink user
+		{/Subtype /Link
+		/Border [ 0 0 0 ]
+		/A << /S /URI /URI (#2) >>}{\rgb{1 0 0}{#1}}%
+	\pdfendlink}
+\def\rgbo#1#2{\rgboo{#1}#2\rgboo{0 0 0}}
+\def\rgb#1#2{\mark{#1}\rgbo{#1}{#2}\mark{0 0 0}}
+\def\pdflink#1{\pdfklink{#1}{#1}}
+\def\xxxlink#1{\pdfklink{#1}{http://arXiv.org/abs/#1}}
+
+
+
+
+
+
+
+
+
+%%%        _____           ___           ___     
+%%%       /  /::\         /  /\         /  /\    
+%%%      /  /:/\:\       /  /::\       /  /:/    
+%%%     /  /:/  \:\     /  /:/\:\     /  /:/     
+%%%    /__/:/ \  \:\   /  /:/  \:\   /  /:/  ___ 
+%%%    \  \:\  \__\:\ /  /:/ \__\:\ /__/:/  /  /\
+%%%     \  \:\ /  /:| \  \:\ /  /:/ \  \:\ /  /:/
+%%%      \  \:\  /:/   \  \:\  /:/   \  \:\  /:/ 
+%%%       \  \:\/:/     \  \:\/:/     \  \:\/:/  
+%%%        \  \::/       \  \::/       \  \::/   
+%%%         \__\/         \__\/         \__\/    
+%%%                   
+
+\def\actson{\curvearrowright}
+\def\defeq{\mathrel{\mathop=^{\text{def}}}}
+\def\mapright#1{\smash{
+    \mathop{\longrightarrow}\limits^{#1}}}
+
+
+% HOW TO PUT THINGS BELOW TEXT
+% \def\swag#1{{\vbox{\mathsurround=0pt\ialign{##\crcr
+%      $\scriptstyle\rightarrow$\crcr\noalign{\kern-10pt\nointerlineskip}
+%      $\hfil\displaystyle{#1}\hfil$\crcr}}}}
+
+
+
+
+
+
+% https://tex.stackexchange.com/questions/63789/inserting-an-image-in-plain-tex
+
+
+\def\url#1{\hlstart{url}{}{#1}\verbatim{#1}\endverbatim\hlend}
+
+%%% Local Variables:
+%%% mode: plain-tex
+%%% TeX-master: t
+%%% End:
